@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-05-03}
+    \date{2019-05-04}
 
 \usepackage{booktabs}
 
@@ -141,7 +141,7 @@
 
 My vision for this package has somewhat grown from what I intended to what it is today. At first, my intention was just to make some convenience functions for dealing with AWS, but what I soon realized is that there is a lot of potential for more sophisticated tools once these pieces are in place. For example, you can spin up an EC2 server with the \texttt{ec2\_instance\_create} function. That function has a useful parameter in it, \texttt{user\_data}. With that parameter, you can send a shell script to run while the server is starting up. Most will go ahead and log into the server, install packages, databases, Rstudio Server, GPU Support, PostrgreSQL, etc. This is not always intuitive or easy. Especially for the beginner.
 
-My hope is I can take this burden from a lot of people and do it all in advance. Most people know what they want, but aren't familiar with all the technical pieces of the puzzle. This package is only about two weeks old, so a lot of features are in their infancy. But will go ahead and jump right in.
+My hope is I can take this burden from the day-to-day data practitioner. Most people know what they want - access to computing power - but aren't familiar with all the technical pieces of the puzzle.
 
 \hypertarget{warning}{%
 \section{WARNING}\label{warning}}
@@ -160,7 +160,7 @@ Before we can do anything, we need to install the package. The package is curren
 \end{Shaded}
 
 \begin{verbatim}
-## Skipping install of 'biggr' from a github remote, the SHA1 (df3eea69) has not changed since last install.
+## Skipping install of 'biggr' from a github remote, the SHA1 (4f34d443) has not changed since last install.
 ##   Use `force = TRUE` to force installation
 \end{verbatim}
 
@@ -191,7 +191,7 @@ Next use the \texttt{install\_python} and choose an environment name to install 
 ##     reticulate::py_install("boto3", method = method, conda = conda, 
 ##         envname = envname)
 ## }
-## <bytecode: 0x7fc02dbe82e0>
+## <bytecode: 0x7fb7c5221508>
 ## <environment: namespace:biggr>
 \end{verbatim}
 
@@ -248,12 +248,12 @@ Here we verify that we are in fact using the correct environment.
 \hypertarget{authentication-with-aws}{%
 \section{Authentication with AWS}\label{authentication-with-aws}}
 
-Next we set permissions. The credentials you see below are no longer working. But they are exactly like what you would be looking for. You need to go to the AWS console and create a user which has access. I created an administrator. This will set the environment variables for the underlying aws command line interface.
+Next we set permissions. You need to go to the AWS console and create a user which has administrator access. This will set the environment variables for the underlying aws command line interface.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{configure_aws}\NormalTok{(}\DataTypeTok{aws_access_key_id =} \StringTok{"AKIAWEUHS5MESHLNKLXI"}\NormalTok{,}
-              \DataTypeTok{aws_secret_access_key =} \StringTok{"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"}\NormalTok{,}
+\KeywordTok{configure_aws}\NormalTok{(}\DataTypeTok{aws_access_key_id =} \StringTok{"XXXXXXXXXX"}\NormalTok{,}
+              \DataTypeTok{aws_secret_access_key =} \StringTok{"XXXXXXXXXX"}\NormalTok{,}
               \DataTypeTok{default.region =} \StringTok{"us-east-2"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}

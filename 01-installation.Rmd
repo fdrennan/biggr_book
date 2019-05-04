@@ -32,11 +32,11 @@ py_config()
 ```
 ## Authentication with AWS
 
-Next we set permissions. The credentials you see below are no longer  working. But they are exactly like what you would be looking for. You need to go to the AWS console and create a user which has access. I created an administrator. This will set the environment variables for the underlying aws command line interface.
+Next we set permissions. You need to go to the AWS console and create a user which has administrator access. This will set the environment variables for the underlying aws command line interface.
 
 ```{r, eval=FALSE}
-configure_aws(aws_access_key_id = "AKIAWEUHS5MESHLNKLXI",
-              aws_secret_access_key = "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",
+configure_aws(aws_access_key_id = "XXXXXXXXXX",
+              aws_secret_access_key = "XXXXXXXXXX",
               default.region = "us-east-2")
 ```
 

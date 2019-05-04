@@ -14,7 +14,7 @@ description: "Technical documentation for the biggr package"
 
 My vision for this package has somewhat grown from what I intended to what it is today. At first, my intention was just to make some convenience functions for dealing with AWS, but what I soon realized is that there is a lot of potential for more sophisticated tools once these pieces are in place. For example, you can spin up an EC2  server with the `ec2_instance_create` function. That function has a useful parameter in it, `user_data`. With that parameter, you can send a shell script to run while the server is starting up. Most will go ahead and log into the server, install packages, databases, Rstudio Server, GPU Support, PostrgreSQL, etc. This is not always intuitive or easy. Especially for the beginner. 
 
-My hope is I can take this burden from a lot of people and do it all in advance. Most people know what they want, but aren't familiar with all the technical pieces of the puzzle. This package is only about two weeks old, so a lot of features are in their infancy. But will go ahead and jump right in.
+My hope is I can take this burden from the day-to-day data practitioner. Most people know what they want - access to computing power - but aren't familiar with all the technical pieces of the puzzle. 
 
 ## WARNING
 

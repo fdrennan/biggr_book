@@ -25,7 +25,7 @@
 <meta name="author" content="Freddy Drennan">
 
 
-<meta name="date" content="2019-05-03">
+<meta name="date" content="2019-05-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Installation</h1>
 <p>Before we can do anything, we need to install the package. The package is currently located on my <a href="https://github.com/fdrennan/biggr">github page</a>. If you have it installed <code>devtools</code>, please run install.packages(“devtools”).</p>
 <pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;fdrennan/biggr&#39;</span>)</code></pre>
-<pre><code>## Skipping install of &#39;biggr&#39; from a github remote, the SHA1 (df3eea69) has not changed since last install.
+<pre><code>## Skipping install of &#39;biggr&#39; from a github remote, the SHA1 (4f34d443) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 <p>Once this is complete, we will use two packages. <code>biggr</code> and <code>reticulate</code>. For more on reticulate, visit <a href="https://rstudio.github.io/reticulate/">Rstudio</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(biggr)
@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     reticulate::py_install(&quot;boto3&quot;, method = method, conda = conda, 
 ##         envname = envname)
 ## }
-## &lt;bytecode: 0x7fc02dbe82e0&gt;
+## &lt;bytecode: 0x7fb7c5221508&gt;
 ## &lt;environment: namespace:biggr&gt;</code></pre>
 <p>Here we create a virtual environment named <code>biggr</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_python</span>(<span class="dt">envname =</span> <span class="st">&#39;biggr&#39;</span>)</code></pre>
@@ -211,9 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  /Users/digitalfirstmedia/.talon/bin/python</code></pre>
 <div id="authentication-with-aws" class="section level2">
 <h2><span class="header-section-number">2.1</span> Authentication with AWS</h2>
-<p>Next we set permissions. The credentials you see below are no longer working. But they are exactly like what you would be looking for. You need to go to the AWS console and create a user which has access. I created an administrator. This will set the environment variables for the underlying aws command line interface.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">configure_aws</span>(<span class="dt">aws_access_key_id =</span> <span class="st">&quot;AKIAWEUHS5MESHLNKLXI&quot;</span>,
-              <span class="dt">aws_secret_access_key =</span> <span class="st">&quot;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&quot;</span>,
+<p>Next we set permissions. You need to go to the AWS console and create a user which has administrator access. This will set the environment variables for the underlying aws command line interface.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">configure_aws</span>(<span class="dt">aws_access_key_id =</span> <span class="st">&quot;XXXXXXXXXX&quot;</span>,
+              <span class="dt">aws_secret_access_key =</span> <span class="st">&quot;XXXXXXXXXX&quot;</span>,
               <span class="dt">default.region =</span> <span class="st">&quot;us-east-2&quot;</span>)</code></pre>
 <p>Then finally we verify that the package is in fact working in talking to Python as well as AWS.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">s3_list_buckets</span>()</code></pre>
