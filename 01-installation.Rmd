@@ -1,0 +1,47 @@
+# Installation {#installation}
+
+Before we can do anything, we need to install the package. The package is currently located on my [github page](https://github.com/fdrennan/biggr). If you have it installed `devtools`,  please run install.packages("devtools").
+
+```{r}
+devtools::install_github('fdrennan/biggr')
+```
+
+Once this is complete, we will use two packages. `biggr` and `reticulate`. For more on reticulate, visit [Rstudio](https://rstudio.github.io/reticulate/).
+
+```{r}
+library(biggr)
+library(reticulate)
+```
+Next use the `install_python` and choose an environment name to install the package. By default, R uses the virtual environment `r_reticulate`. You can use this environment or specify a different name. I will use a different name below. My understanding is that if you do not specify the environment, each time you load up R you will not have to specify which environment to use because R uses `r_reticulate` by default. *You can also use Conda by specifying `method = conda`. The insides of the function are directly below.
+```{r nice-tab, tidy=FALSE}
+install_python
+```
+Here we create a virtual environment named `biggr`.
+```{r, eval = FALSE}
+install_python(envname = 'biggr')
+```
+
+Next we go ahead and set which environment we want to use.
+```{r}
+use_virtualenv('biggr')
+```
+
+Here we verify that we are in fact using the correct environment.
+```{r}
+py_config()
+```
+## Authentication with AWS
+
+Next we set permissions. The credentials you see below are no longer  working. But they are exactly like what you would be looking for. You need to go to the AWS console and create a user which has access. I created an administrator. This will set the environment variables for the underlying aws command line interface.
+
+```{r, eval=FALSE}
+configure_aws(aws_access_key_id = "AKIAWEUHS5MESHLNKLXI",
+              aws_secret_access_key = "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",
+              default.region = "us-east-2")
+```
+
+Then finally we verify that the package is in fact working in talking to Python as well as AWS.
+```{r}
+s3_list_buckets()
+```
+

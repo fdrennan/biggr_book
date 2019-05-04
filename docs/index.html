@@ -33,7 +33,7 @@
   
   
 
-<link rel="next" href="introduction-getting-started.html">
+<link rel="next" href="installation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,15 +130,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Vision</a></li>
-<li class="chapter" data-level="2" data-path="introduction-getting-started.html"><a href="introduction-getting-started.html"><i class="fa fa-check"></i><b>2</b> Introduction {#Getting Started}</a></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About the biggr Package</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#warning"><i class="fa fa-check"></i><b>1.1</b> WARNING</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#authentication-with-aws"><i class="fa fa-check"></i><b>2.1</b> Authentication with AWS</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="boto3-and-python.html"><a href="boto3-and-python.html"><i class="fa fa-check"></i><b>3</b> boto3 and Python</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -165,16 +163,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>Freddy Drennan</em></p>
 <p class="date"><em>2019-05-03</em></p>
 </div>
-<div id="vision" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Vision</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)
-<span class="co"># or the development version</span>
-<span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></code></pre>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+<div id="about-the-biggr-package" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> About the biggr Package</h1>
+<p>My vision for this package has somewhat grown from what I intended to what it is today. At first, my intention was just to make some convenience functions for dealing with AWS, but what I soon realized is that there is a lot of potential for more sophisticated tools once these pieces are in place. For example, you can spin up an EC2 server with the <code>ec2_instance_create</code> function. That function has a useful parameter in it, <code>user_data</code>. With that parameter, you can send a shell script to run while the server is starting up. Most will go ahead and log into the server, install packages, databases, Rstudio Server, GPU Support, PostrgreSQL, etc. This is not always intuitive or easy. Especially for the beginner.</p>
+<p>My hope is I can take this burden from a lot of people and do it all in advance. Most people know what they want, but aren’t familiar with all the technical pieces of the puzzle. This package is only about two weeks old, so a lot of features are in their infancy. But will go ahead and jump right in.</p>
+<div id="warning" class="section level2">
+<h2><span class="header-section-number">1.1</span> WARNING</h2>
+<p>This package uses AWS which is not a free service. You assume all costs associated and should do your research about what you are requesting. I’m not picking up the bill.</p>
 
+</div>
 </div>
             </section>
 
@@ -182,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="introduction-getting-started.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="installation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -227,19 +224,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

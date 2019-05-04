@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 3 Literature | biggr</title>
+  <title>Chapter 2 Installation | biggr</title>
   <meta name="description" content="Technical documentation for the biggr package">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 3 Literature | biggr" />
+  <meta property="og:title" content="Chapter 2 Installation | biggr" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Literature | biggr" />
+  <meta name="twitter:title" content="Chapter 2 Installation | biggr" />
   
   <meta name="twitter:description" content="Technical documentation for the biggr package" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="installation.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="boto3-and-python.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a><ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#authentication-with-aws"><i class="fa fa-check"></i><b>2.1</b> Authentication with AWS</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="boto3-and-python.html"><a href="boto3-and-python.html"><i class="fa fa-check"></i><b>3</b> boto3 and Python</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -158,18 +158,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="literature" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Literature</h1>
-<p>Here is a review of existing methods.</p>
+<div id="installation" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Installation</h1>
+<p>Before we can do anything, we need to install the package. The package is currently located on my <a href="https://github.com/fdrennan/biggr">github page</a>. If you have it installed <code>devtools</code>, please run install.packages(“devtools”).</p>
+<pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;fdrennan/biggr&#39;</span>)</code></pre>
+<pre><code>## Skipping install of &#39;biggr&#39; from a github remote, the SHA1 (df3eea69) has not changed since last install.
+##   Use `force = TRUE` to force installation</code></pre>
+<p>Once this is complete, we will use two packages. <code>biggr</code> and <code>reticulate</code>. For more on reticulate, visit <a href="https://rstudio.github.io/reticulate/">Rstudio</a>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(biggr)
+<span class="kw">library</span>(reticulate)</code></pre>
+<p>Next use the <code>install_python</code> and choose an environment name to install the package. By default, R uses the virtual environment <code>r_reticulate</code>. You can use this environment or specify a different name. I will use a different name below. My understanding is that if you do not specify the environment, each time you load up R you will not have to specify which environment to use because R uses <code>r_reticulate</code> by default. *You can also use Conda by specifying <code>method = conda</code>. The insides of the function are directly below.</p>
+<pre class="sourceCode r"><code class="sourceCode r">install_python</code></pre>
+<pre><code>## function (method = &quot;auto&quot;, conda = &quot;auto&quot;, envname = &quot;r_reticulate&quot;) 
+## {
+##     reticulate::py_install(&quot;scipy&quot;, method = method, conda = conda, 
+##         envname = envname)
+##     reticulate::py_install(&quot;awscli&quot;, method = method, conda = conda, 
+##         envname = envname)
+##     reticulate::py_install(&quot;boto3&quot;, method = method, conda = conda, 
+##         envname = envname)
+## }
+## &lt;bytecode: 0x7fc02dbe82e0&gt;
+## &lt;environment: namespace:biggr&gt;</code></pre>
+<p>Here we create a virtual environment named <code>biggr</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_python</span>(<span class="dt">envname =</span> <span class="st">&#39;biggr&#39;</span>)</code></pre>
+<p>Next we go ahead and set which environment we want to use.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">use_virtualenv</span>(<span class="st">&#39;biggr&#39;</span>)</code></pre>
+<p>Here we verify that we are in fact using the correct environment.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">py_config</span>()</code></pre>
+<pre><code>## python:         /Users/digitalfirstmedia/.virtualenvs/biggr/bin/python
+## libpython:      /System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config/libpython2.7.dylib
+## pythonhome:     /System/Library/Frameworks/Python.framework/Versions/2.7:/System/Library/Frameworks/Python.framework/Versions/2.7
+## virtualenv:     /Users/digitalfirstmedia/.virtualenvs/biggr/bin/activate_this.py
+## version:        2.7.10 (default, Aug 17 2018, 19:45:58)  [GCC 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.0.42)]
+## numpy:          /Users/digitalfirstmedia/.virtualenvs/biggr/lib/python2.7/site-packages/numpy
+## numpy_version:  1.16.3
+## scipy:          /Users/digitalfirstmedia/.virtualenvs/biggr/lib/python2.7/site-packages/scipy
+## 
+## python versions found: 
+##  /Users/digitalfirstmedia/.virtualenvs/biggr/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/r-reticulate/bin/python
+##  /usr/bin/python
+##  /usr/local/bin/python
+##  /usr/local/bin/python3
+##  /Users/digitalfirstmedia/.virtualenvs/biggr_env/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/py3-virtualenv/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/r_reticulate/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/r-tensorflow/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/venv/bin/python
+##  /Users/digitalfirstmedia/.virtualenvs/voicecode/bin/python
+##  /anaconda3/envs/r-tensorflow/bin/python
+##  /Users/digitalfirstmedia/.talon/bin/python</code></pre>
+<div id="authentication-with-aws" class="section level2">
+<h2><span class="header-section-number">2.1</span> Authentication with AWS</h2>
+<p>Next we set permissions. The credentials you see below are no longer working. But they are exactly like what you would be looking for. You need to go to the AWS console and create a user which has access. I created an administrator. This will set the environment variables for the underlying aws command line interface.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">configure_aws</span>(<span class="dt">aws_access_key_id =</span> <span class="st">&quot;AKIAWEUHS5MESHLNKLXI&quot;</span>,
+              <span class="dt">aws_secret_access_key =</span> <span class="st">&quot;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&quot;</span>,
+              <span class="dt">default.region =</span> <span class="st">&quot;us-east-2&quot;</span>)</code></pre>
+<p>Then finally we verify that the package is in fact working in talking to Python as well as AWS.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">s3_list_buckets</span>()</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   name             creation_date            
+##   &lt;chr&gt;            &lt;chr&gt;                    
+## 1 couch-dog-photos 2019-03-08 04:45:05+00:00
+## 2 fdrennanunittest 2019-05-02 21:15:04+00:00
+## 3 freddydbucket    2019-05-03 05:46:19+00:00
+## 4 kerasmods        2019-01-29 20:47:11+00:00</code></pre>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="installation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="boto3-and-python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
