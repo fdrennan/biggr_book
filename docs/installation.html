@@ -25,7 +25,7 @@
 <meta name="author" content="Freddy Drennan">
 
 
-<meta name="date" content="2019-05-04">
+<meta name="date" content="2019-05-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -162,8 +162,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Installation</h1>
 <p>Before we can do anything, we need to install the package. The package is currently located on my <a href="https://github.com/fdrennan/biggr">github page</a>. If you have it installed <code>devtools</code>, please run install.packages(“devtools”).</p>
 <pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&#39;fdrennan/biggr&#39;</span>)</code></pre>
-<pre><code>## Skipping install of &#39;biggr&#39; from a github remote, the SHA1 (4f34d443) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
+<pre><code>## Downloading GitHub repo fdrennan/biggr@master</code></pre>
+<pre><code>## 
+##   
+   checking for file ‘/private/var/folders/1q/j1clv3hj53174q0d05p52fsw0000gn/T/RtmpcYNGzb/remotes21c3182b26d/fdrennan-biggr-4f34d44/DESCRIPTION’ ...
+  
+✔  checking for file ‘/private/var/folders/1q/j1clv3hj53174q0d05p52fsw0000gn/T/RtmpcYNGzb/remotes21c3182b26d/fdrennan-biggr-4f34d44/DESCRIPTION’
+## 
+  
+─  preparing ‘biggr’:
+## 
+  
+   checking DESCRIPTION meta-information ...
+  
+✔  checking DESCRIPTION meta-information
+## 
+  
+─  checking for LF line-endings in source and make files and shell scripts
+## 
+  
+─  checking for empty or unneeded directories
+## 
+  
+─  building ‘biggr_1.2.0.tar.gz’
+## 
+  
+   
+## </code></pre>
 <p>Once this is complete, we will use two packages. <code>biggr</code> and <code>reticulate</code>. For more on reticulate, visit <a href="https://rstudio.github.io/reticulate/">Rstudio</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(biggr)
 <span class="kw">library</span>(reticulate)</code></pre>
@@ -178,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     reticulate::py_install(&quot;boto3&quot;, method = method, conda = conda, 
 ##         envname = envname)
 ## }
-## &lt;bytecode: 0x7fe54b379508&gt;
+## &lt;bytecode: 0x7fce2c638150&gt;
 ## &lt;environment: namespace:biggr&gt;</code></pre>
 <p>Here we create a virtual environment named <code>biggr</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install_python</span>(<span class="dt">envname =</span> <span class="st">&#39;biggr&#39;</span>)</code></pre>
